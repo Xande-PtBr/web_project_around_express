@@ -3,8 +3,7 @@ const fs = require("fs");
 const path = require("path");
 const router = new Router();
 
-router.get("/cards", (req, res) => {
-  console.log("Arquivo cards.js carregado!");
+router.get("/", (req, res) => {
   const filePath = path.join(__dirname, "../data/cards.json");
   const cards = fs.readFileSync(filePath, "utf-8");
   return (
