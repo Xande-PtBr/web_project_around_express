@@ -1,0 +1,22 @@
+{
+  "name": "alexandre",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node app.js",
+    "lint": "npx eslint .",
+    "dev": "nodemon app.js"
+  },
+  "author": "alexandre",
+  "license": "ISC",
+  "devDependencies": {
+    "eslint": "^9.18.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.31.0",
+    "nodemon": "^3.1.9"
+  },
+  "dependencies": {
+    "express": "^4.21.2"
+  }
+}
