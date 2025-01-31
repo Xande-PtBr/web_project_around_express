@@ -1,17 +1,21 @@
 const { Router } = require("express");
-const cards = require("../data/cards.json");
 const router = new Router();
+const {
+  getCards,
+  createCard,
+  deleteCard,
+  likeCard,
+  dislikeCard,
+} = require("../controllers/cards");
 
-router.get("/", (req, res) => {
-  return (
-    res.status(200).json(cards),
-    function (err, cards) {
-      if (err) {
-        return res.status(404).send(err);
-      }
-      res.json(cards);
-    }
-  );
-});
+router.get("/", getCards); //------ pesquisa cards
+
+router.post("/", createCard); //------ cria card
+
+router.delete("/:cardId", deleteCard); //------ delete card
+
+router.put("/:cardId/likes", likeCard); //------ add like do card
+
+router.delete("/:cardId/likes", dislikeCard); //--remove like do card
 
 module.exports = router;

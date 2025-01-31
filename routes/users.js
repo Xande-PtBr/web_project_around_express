@@ -1,27 +1,24 @@
 const { Router } = require("express");
 const router = new Router();
-const users = require("../data/users.json");
+const {
+  getUserById,
+  getUsers,
+  createUser,
+  updateUser,
+  updateAvatar,
+  deleteUser,
+} = require("../controllers/users");
 
-router.get("/", (req, res) => {
-  return (
-    res.status(200).json(users),
-    function (err, users) {
-      if (err) {
-        return res.status(500).send(err);
-      }
-      res.json(users);
-    }
-  );
-});
+router.get("/:userId", getUserById);
 
-router.get("/:_id", (req, res) => {
-  const userId = req.params._id;
-  const userFound = users.find((list) => list._id === userId);
-  if (!userFound) {
-    return res.status(404).send({ message: "ID do usuário não encontrado" });
-  }
+router.get("/", getUsers);
 
-  return res.send(userFound);
-});
+router.post("/", createUser);
+
+router.patch("/me", updateUser);
+
+router.patch("/me/avatar", updateAvatar);
+
+router.delete("/:userId", deleteUser);
 
 module.exports = router;
